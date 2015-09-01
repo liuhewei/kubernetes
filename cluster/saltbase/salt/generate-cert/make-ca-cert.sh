@@ -62,8 +62,12 @@ cd "${tmpdir}"
 #
 # Due to GCS caching of public objects, it may take time for this to be widely
 # distributed.
+export https_proxy=https://9.91.13.41:8081
+export http_proxy=http://9.91.13.41:8081
 curl -L -O https://storage.googleapis.com/kubernetes-release/easy-rsa/easy-rsa.tar.gz > /dev/null 2>&1
 tar xzf easy-rsa.tar.gz > /dev/null 2>&1
+unset http_proxy
+unset https_proxy
 
 cd easy-rsa-master/easyrsa3
 ./easyrsa init-pki > /dev/null 2>&1
